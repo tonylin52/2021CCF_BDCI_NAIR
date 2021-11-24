@@ -21,6 +21,7 @@ CCF大数据与计算智能大赛基于飞桨实现花样滑冰选手骨骼点�
 cd data
 unzip 
 ```
+项目的整体目录层级如下
 ```
 |- data
      |- XtSe
@@ -45,9 +46,9 @@ unzip
 |- 花样滑冰比赛文档.docx
 |- .gitignore
 |- README.md
+# 在work/路径下，有三个主要的模型对应的文件夹，其中XtSe/文件夹里面的是XtSe系列的模型，Distill/文件夹里面是RSD系列模型，Res152/文件夹里面是ResNet152系列模型，最终结果基于以上所有的模型的集成得到。
 ```
 
-> 在work/路径下，有三个主要的模型对应的文件夹，其中XtSe/文件夹里面的是XtSe系列的模型，Distill/文件夹里面是RSD系列模型，Res152/文件夹里面是ResNet152系列模型，最终结果基于以上所有的模型的集成得到。
 
 
 ## 模型推理
@@ -55,6 +56,15 @@ unzip
 ```
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/ 
 ```
+
+直接利用本次比赛模型生成好的29个csv直接融合，生成B榜结果
+```
+cd work/Kaggle-Ensemble-Guide-master
+tar -xvf testB.tar
+python src/kaggle_vote.py "testB/submissions/*.csv" "./submission.csv"
+```
+
+### 利用模型推理29个模型csv结果
 
 推理XtSe系列模型结果
 ```
@@ -77,14 +87,6 @@ sh test.sh
 cd work/Kaggle-Ensemble-Guide-master
 python src/kaggle_vote.py "./submissions/*.csv" "./submission.csv"
 ```
-
-可以直接利用本次比赛生成好的csv直接推理
-```
-cd work/Kaggle-Ensemble-Guide-master
-tar -xvf testB.tar
-python src/kaggle_vote.py "testB/submissions/*.csv" "./submission.csv"
-```
-
 
 ## 模型训练
 ### 数据
