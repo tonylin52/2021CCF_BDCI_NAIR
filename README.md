@@ -46,7 +46,6 @@ unzip
 | -- .gitignore
 | -- README.md
 
-```
 > 在work/路径下，有三个主要的模型对应的文件夹，其中XtSe/文件夹里面的是XtSe系列的模型，Distill/文件夹里面是RSD系列模型，Res152/文件夹里面是ResNet152系列模型，最终结果基于以上所有的模型的集成得到。
 
 
