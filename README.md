@@ -5,20 +5,31 @@
 ## 项目结构
 > 一目了然的项目结构能帮助更多人了解，目录树以及设计思想都很重要~
 ```
-|-- TrainData
-    |-- XtSe
-        |-- datasplit.py
-    |-- Distill
-    |-- Res152
-|-- TestData
-|-- Model
-    |-- XtSe
-    |-- Distill
-    |-- Res152
-|-- train.sh
-|-- test.sh
-|-- .gitignore
-|-- README.md
+| -- data
+| -- XtSe
+| -- Distill
+| -- Res152
+| -- test_B_data.npy
+| -- work
+| -- XtSe
+    | -- *模型代码文件*
+    | -- train.sh
+    | -- test.sh
+| -- Distill
+| -- *模型代码文件*
+    | -- train.sh
+    | -- test.sh
+| -- Res152
+| -- *模型代码文件*
+    | -- train.sh
+    | -- test.sh
+| -- Ensemble
+    | -- *模型代码文件*
+    | -- test.sh
+| -- requirements.txt
+| -- 花样滑冰比赛文档.docx
+| -- .gitignore
+| -- README.md
 
 ```
 ## 模型推理
