@@ -1,5 +1,5 @@
 # 2021 CCF BDCI基于飞桨实现花样滑冰选手骨骼点动作识别-第1名方案
- > github中空间有限，此项目中data与算法模型文件参见https://aistudio.baidu.com/aistudio/projectdetail/2925777?contributionType=1下载
+ > github中空间有限，此项目中data与算法模型文件参见https://aistudio.baidu.com/aistudio/projectdetail/2925777?contributionType=1     下载
 ## 项目描述
 CCF大数据与计算智能大赛基于飞桨实现花样滑冰选手骨骼点动作识别----新东方人工智能研究院队伍
 
