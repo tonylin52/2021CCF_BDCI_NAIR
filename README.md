@@ -28,15 +28,15 @@ unzip
     | -- test_B_data.npy
 | -- work
     | -- XtSe
-        | -- *模型代码文件*
+        | -- 模型代码文件
         | -- train.sh
         | -- test.sh
     | -- Distill
-        | -- *模型代码文件*
+        | -- 模型代码文件
         | -- train.sh
         | -- test.sh
     | -- Res152
-        | -- *模型代码文件*
+        | -- 模型代码文件
         | -- train.sh
         | -- test.sh
     | -- Kaggle-Ensemble-Guide-master
