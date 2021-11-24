@@ -16,7 +16,12 @@
 ![avatar](1.png)
 
 ## 项目结构
+由于数据文件较多，首先需要解压数据，保证目录统一
 ```
+cd data
+unzip 
+```
+
 | -- data
     | -- XtSe
     | -- Distill
@@ -35,9 +40,7 @@
         | -- *模型代码文件*
         | -- train.sh
         | -- test.sh
-    | -- Ensemble
-        | -- *模型代码文件*
-        | -- test.sh
+    | -- Kaggle-Ensemble-Guide-master
 | -- requirements.txt
 | -- 花样滑冰比赛文档.docx
 | -- .gitignore
@@ -48,6 +51,11 @@
 
 
 ## 模型推理
+模型运行前需要安装必要环境
+```
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/ 
+```
+
 推理XtSe系列模型结果
 ```
 cd work/XtSe/
@@ -63,25 +71,36 @@ sh test.sh
 cd work/Res152/
 sh test.sh
 ```
-使用如下代码进行模型融合
+
+基于投票的方式进行模型融合，将所有模型得到的csv文件放到work/Kaggle-Ensemble-Guide-master/submissions下
+```
+cd work/Kaggle-Ensemble-Guide-master
+python src/kaggle_vote.py "./submissions/*.csv" "./submission.csv"
 ```
 
+可以直接利用本次比赛生成好的csv直接推理
 ```
+cd work/Kaggle-Ensemble-Guide-master
+tar -xvf testB.tar
+python src/kaggle_vote.py "testB/submissions/*.csv" "./submission.csv"
+```
+
 
 ## 模型训练
 ### 数据
 生成XtSe系列数据（AIStudio环境中已经给出我们分好的五折数据，尽量使用此数据进行复现，如果使用代码重新分组，不能保证数据分布与已给出的五折数据分布一致）。
 ```
-python
+#详见此目录下的README.md
+python work/XtSe/tools/split_crossval.py
 ```
 生成RSD系列模型数据
 ```
+# 详见此目录下的README.md
+cd work/Distill
+python relabel_5fold.py ../../data/Distill/5fold_val_data/valdata_%d.npy ../../data/Distill/5fold_val_pred/nwc5-%d.npy ../../data/Distill/new_train1/
+# RSD训练数据中npy文件为利用在训练集5折数据上训练的ResNet152模型在训练集数据上重新打标得到，可以详见work/RSD/README.md计算npy
+```
 
-```
-RSD训练数据中npy文件为利用在训练集5折数据上训练的ResNet152模型在训练集数据上重新打标得到，可以利用如下命令计算npy
-```
-
-```
 Resnet152系列模型数据，就是原始训练数据，在如下位置
 ```
 data/Res152
@@ -91,7 +110,8 @@ data/Res152
 训练XtSe系列模型
 ```
 cd work/XtSe/
-sh train.sh
+# 训练较为复杂，详见此目录下的README.md
+# sh train.sh
 ```
 训练RSD系列模型
 ```
