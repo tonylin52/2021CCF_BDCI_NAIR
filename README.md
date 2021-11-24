@@ -22,29 +22,29 @@ cd data
 unzip 
 ```
 
-| -- data
-    | -- XtSe
-    | -- Distill
-    | -- Res152
-    | -- test_B_data.npy
-| -- work
-    | -- XtSe
-        | -- 模型代码文件
-        | -- train.sh
-        | -- test.sh
-    | -- Distill
-        | -- 模型代码文件
-        | -- train.sh
-        | -- test.sh
-    | -- Res152
-        | -- 模型代码文件
-        | -- train.sh
-        | -- test.sh
-    | -- Kaggle-Ensemble-Guide-master
-| -- requirements.txt
-| -- 花样滑冰比赛文档.docx
-| -- .gitignore
-| -- README.md
+|- data
+     |- XtSe
+     |- Distill
+     |- Res152
+     |- test_B_data.npy
+|- work
+     |- XtSe
+         |- 模型代码文件
+         |- train.sh
+         |- test.sh
+     |- Distill
+         |-  模型代码文件
+         |-  train.sh
+         |-  test.sh
+     |- Res152
+         |- 模型代码文件
+         |- train.sh
+         |- test.sh
+     |- Kaggle-Ensemble-Guide-master
+|- requirements.txt
+|- 花样滑冰比赛文档.docx
+|- .gitignore
+|- README.md
 
 
 > 在work/路径下，有三个主要的模型对应的文件夹，其中XtSe/文件夹里面的是XtSe系列的模型，Distill/文件夹里面是RSD系列模型，Res152/文件夹里面是ResNet152系列模型，最终结果基于以上所有的模型的集成得到。
