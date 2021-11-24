@@ -22,11 +22,13 @@ cd data
 unzip 
 ```
 
-| -- data
-    | -- XtSe
+|-- data
+
+    |-- XtSe
     | -- Distill
     | -- Res152
     | -- test_B_data.npy
+
 | -- work
     | -- XtSe
         | -- 模型代码文件
