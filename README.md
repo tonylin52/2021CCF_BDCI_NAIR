@@ -1,6 +1,5 @@
 # 2021 CCF BDCI基于飞桨实现花样滑冰选手骨骼点动作识别-第1名方案
-
- 
+ > github中空间有限，此项目中data与算法模型文件参见https://aistudio.baidu.com/aistudio/projectdetail/2925777?contributionType=1下载
 ## 项目描述
 CCF大数据与计算智能大赛基于飞桨实现花样滑冰选手骨骼点动作识别----新东方人工智能研究院队伍
 
@@ -36,6 +35,7 @@ data解压后，项目的整体目录层级如下
          |- 模型代码文件
          |- train.sh
          |- test.sh
+         |- fast_test.sh
      |- Distill
          |-  模型代码文件
          |-  train.sh
@@ -72,7 +72,7 @@ python src/kaggle_vote.py "testB/submissions/*.csv" "./submission.csv"
 推理XtSe系列模型结果
 ```
 cd work/XtSe/
-sh test.sh
+sh fast_test.sh
 ```
 推理RSD系列模型结果
 ```
@@ -127,6 +127,12 @@ sh train.sh
 ```
 cd work/Res152/
 sh train.sh
+```
+### 模型融合
+将work/XtSe/，work/Distill/，work/Res152/目录下所产生的.csv文件放到/home/aistudio/work/Kaggle-Ensemble-Guide-master下自建目录submissions里，执行
+```
+cd /home/aistudio/work/Kaggle-Ensemble-Guide-master
+python src/kaggle_vote.py "./submissions/*.csv" "./submission.csv"
 ```
 
 

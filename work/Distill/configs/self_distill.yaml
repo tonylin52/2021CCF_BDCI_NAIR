@@ -1,0 +1,172 @@
+MODEL: #MODEL field
+    framework: "Recognizer3D" #Mandatory, indicate the type of network, associate to the 'paddlevideo/modeling/framework/' .
+    backbone: #Mandatory, indicate the type of backbone, associate to the 'paddlevideo/modeling/backbones/' .
+        name: "ResNetSlowOnly"
+        depth: 50 # Not Optional, only 50 now.
+        input_channel_num: [25]
+        width_per_group: 32
+        # fusion_kernel_sz: 5
+    head:
+        name: "I3DHead"
+        dim_in: 512
+        num_classes: 30
+        dropout_rate: 0.5
+        ls_eps: 0.1
+
+DATASET: #DATASET field
+    batch_size: 16 #Mandatory, bacth size
+    num_workers: 0 #Mandatory, the number of subprocess on each GPU.
+    test_batch_size: 1
+    valid_batch_size: 1
+    test_num_workers: 0
+    train:
+        format: "PoseDataset" #Mandatory, indicate the type of dataset, associate to the 'paddlevidel/loader/dateset'
+        keypoint_file: "/home/aistudio/data/Distill/new_train/train_org_data.npy" #Mandatory, train data index file path
+        label_file: "/home/aistudio/data/Distill/new_train/train_label.npy"
+        conf_thres: 0.0
+        num_classes: 30
+#    valid:
+#        format: "PoseDataset" #Mandatory, indicate the type of dataset, associate to the 'paddlevidel/loader/dateset'
+#        keypoint_file: "/aiot_nfs/jzz_data/paddle_jzz/data/5folder_Resample_origin/1_filtered/valdata_1.npy" #Mandatory, train data index file path
+#        label_file: "/aiot_nfs/jzz_data/paddle_jzz/data/5folder_Resample_origin/1_filtered/vallabel_1.npy"
+#        conf_thres: 0.0
+#        num_classes: 30
+#        class_filter: []
+#        # ann_file: "data/posec3d/new_val.pkl"
+        
+    test:
+        format: "PoseDataset" #Mandatory, indicate the type of dataset, associate to the 'paddlevidel/loader/dateset'
+        keypoint_file: "../../TrainData/Distill/test_A_data.npy" #Mandatory, train data index file path
+        label_file: ""
+        conf_thres: 0.0
+        test_mode: True
+
+PIPELINE: #PIPELINE field
+    train: #Mandotary, indicate the pipeline to deal with the training data, associate to the 'paddlevideo/loader/pipelines/'
+        sample:
+            name: "UniformSampleFrames"
+            clip_len: 64
+
+        transform: #Mandotary, image transfrom operator
+            - PoseDecode:
+            - PoseCompact:
+                hw_ratio: 1.0
+                allow_imgpad: True
+            - Resize:
+                scale: [-1, 64]
+            - RandomResizedCrop:
+                area_range: [0.56,1.0]
+            - Resize:
+                scale: [28, 56]
+                keep_ratio: False
+            - Flip:
+                flip_ratio: 0.5
+                left_kp: [5, 6, 7, 12, 13, 14, 16, 18, 19, 20, 21] 
+                right_kp: [2, 3, 4, 9, 10, 11, 15, 17, 22, 23, 24]
+            - GeneratePoseTarget:
+                sigma: 0.6
+                use_score: True
+                with_kp: True
+                with_limb: False
+                left_kp: [5, 6, 7, 12, 13, 14, 16, 18, 19, 20, 21] 
+                right_kp: [2, 3, 4, 9, 10, 11, 15, 17, 22, 23, 24]
+                skeletons: [[0, 1], [0, 15],[0, 16], [1, 2], [1, 5], [1, 8],[2, 3], [3, 4], [5, 6],
+                            [6 ,7], [8, 9], [8, 12], [9, 10], [10, 11], [11, 22], [11, 24], [12, 13],
+                            [13, 14], [14, 21], [14, 19], [15, 17], [16, 18], [19 ,20], [22, 23]]
+            - FormatShape:
+                input_format: 'NCTHW'
+    valid:
+        sample:
+            name: "UniformSampleFrames"
+            clip_len: 64
+            num_clips: 1
+            test_mode: True
+        transform: #Mandotary, image transfrom operator
+            - PoseDecode:
+            - PoseCompact:
+                hw_ratio: 1.0
+                allow_imgpad: True
+            - Resize:
+                scale: [32, 64]
+                keep_ratio: False
+            - GeneratePoseTarget:
+                sigma: 0.6
+                use_score: True
+                with_kp: True
+                with_limb: False
+                double: True
+                left_kp: [5, 6, 7, 12, 13, 14, 16, 18, 19, 20, 21] 
+                right_kp: [2, 3, 4, 9, 10, 11, 15, 17, 22, 23, 24]
+                skeletons: [[0, 1], [0, 15],[0, 16], [1, 2], [1, 5], [1, 8],[2, 3], [3, 4], [5, 6],
+                            [6 ,7], [8, 9], [8, 12], [9, 10], [10, 11], [11, 22], [11, 24], [12, 13],
+                            [13, 14], [14, 21], [14, 19], [15, 17], [16, 18], [19 ,20], [22, 23]]
+            - FormatShape:
+                input_format: 'NCTHW'
+
+
+    test: #Mandatory, indicate the pipeline to deal with the validing data. associate to the 'paddlevideo/loader/pipelines/'
+        sample:
+            name: "UniformSampleFrames"
+            clip_len: 64
+            num_clips: 10
+            test_mode: True
+        transform: #Mandotary, image transfrom operator
+            - PoseDecode:
+            - PoseCompact:
+                hw_ratio: 1.0
+                allow_imgpad: True
+            - Resize:
+                scale: [32, 64]
+                keep_ratio: False
+            - GeneratePoseTarget:
+                sigma: 0.6
+                use_score: True
+                with_kp: True
+                with_limb: False
+                double: True
+                left_kp: [5, 6, 7, 12, 13, 14, 16, 18, 19, 20, 21] 
+                right_kp: [2, 3, 4, 9, 10, 11, 15, 17, 22, 23, 24]
+                skeletons: [[0, 1], [0, 15],[0, 16], [1, 2], [1, 5], [1, 8],[2, 3], [3, 4], [5, 6],
+                            [6 ,7], [8, 9], [8, 12], [9, 10], [10, 11], [11, 22], [11, 24], [12, 13],
+                            [13, 14], [14, 21], [14, 19], [15, 17], [16, 18], [19 ,20], [22, 23]]
+            - FormatShape:
+                input_format: 'NCTHW'
+
+
+OPTIMIZER: #OPTIMIZER field
+  name: 'Momentum'
+  momentum: 0.9
+  learning_rate:
+    name: 'CosineAnnealingDecay'
+    learning_rate: 0.1
+    T_max: 120
+  weight_decay:
+    name: 'L2'
+    value: 0.0001
+
+
+PRECISEBN:
+   preciseBN_interval: 10
+   num_iters_preciseBN: 200  #default
+
+METRIC:
+    name: 'SkeletonMetric'
+    out_file: 'submission_self_distill.csv'
+    val_npy: 'nwc5-1-filtered.npy'
+
+
+INFERENCE:
+    name: 'STGCN_Inference_helper'
+    num_channels: 2
+    window_size: 350
+    vertex_nums: 25
+    person_nums: 1
+
+
+model_name: "nwc5-1-filtered"
+log_interval: 20 #Optional, the interal of logger, default:10
+save_interval: 5
+val_interval: 5
+epochs: 120 #Mandatory, total epoch
+output_dir: "output/self_distill"
+

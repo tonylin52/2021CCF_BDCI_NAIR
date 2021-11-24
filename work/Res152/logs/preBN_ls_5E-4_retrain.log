@@ -1,0 +1,153 @@
+[11/24 14:49:48] DALI is not installed, you can improve performance if use DALI
+[11/24 14:49:48] [35mDATASET[0m : 
+[11/24 14:49:48]     [35mbatch_size[0m : [92m16[0m
+[11/24 14:49:48]     [35mnum_workers[0m : [92m0[0m
+[11/24 14:49:48]     [35mtest[0m : 
+[11/24 14:49:48]         [35mconf_thres[0m : [92m0.0[0m
+[11/24 14:49:48]         [35mformat[0m : [92mPoseDataset[0m
+[11/24 14:49:48]         [35mkeypoint_file[0m : [92m/home/jiazhaozhu/PaddleVideo_jzz_176/data/test_A_data.npy[0m
+[11/24 14:49:48]         [35mlabel_file[0m : [92m[0m
+[11/24 14:49:48]         [35mtest_mode[0m : [92mTrue[0m
+[11/24 14:49:48]     [35mtest_batch_size[0m : [92m1[0m
+[11/24 14:49:48]     [35mtest_num_workers[0m : [92m0[0m
+[11/24 14:49:48]     [35mtrain[0m : 
+[11/24 14:49:48]         [35mconf_thres[0m : [92m0.0[0m
+[11/24 14:49:48]         [35mformat[0m : [92mPoseDataset[0m
+[11/24 14:49:48]         [35mkeypoint_file[0m : [92m/home/jiazhaozhu/PaddleVideo_jzz_176/data/train_data.npy[0m
+[11/24 14:49:48]         [35mlabel_file[0m : [92m/home/jiazhaozhu/PaddleVideo_jzz_176/data/train_label.npy[0m
+[11/24 14:49:48]     [35mvalid[0m : 
+[11/24 14:49:48]         [35mconf_thres[0m : [92m0.0[0m
+[11/24 14:49:48]         [35mformat[0m : [92mPoseDataset[0m
+[11/24 14:49:48]         [35mkeypoint_file[0m : [92m/home/jiazhaozhu/PaddleVideo_jzz_176/data/ceshi_val.npy[0m
+[11/24 14:49:48]         [35mlabel_file[0m : [92m/home/jiazhaozhu/PaddleVideo_jzz_176/data/ceshi_val_label.npy[0m
+[11/24 14:49:48]     [35mvalid_batch_size[0m : [92m1[0m
+[11/24 14:49:48] ------------------------------------------------------------
+[11/24 14:49:48] [35mINFERENCE[0m : 
+[11/24 14:49:48]     [35mname[0m : [92mSTGCN_Inference_helper[0m
+[11/24 14:49:48]     [35mnum_channels[0m : [92m2[0m
+[11/24 14:49:48]     [35mperson_nums[0m : [92m1[0m
+[11/24 14:49:48]     [35mvertex_nums[0m : [92m25[0m
+[11/24 14:49:48]     [35mwindow_size[0m : [92m350[0m
+[11/24 14:49:48] ------------------------------------------------------------
+[11/24 14:49:48] [35mMETRIC[0m : 
+[11/24 14:49:48]     [35mconf_npy[0m : [92msubmission152_olddata_5E-4_200_preBN_ls.npy[0m
+[11/24 14:49:48]     [35mname[0m : [92mSkeletonMetric[0m
+[11/24 14:49:48]     [35mout_file[0m : [92msubmission152_olddata_5E-4_200_preBN_ls.csv[0m
+[11/24 14:49:48]     [35mval_npy[0m : [92mtotal_data.npy[0m
+[11/24 14:49:48] ------------------------------------------------------------
+[11/24 14:49:48] [35mMODEL[0m : 
+[11/24 14:49:48]     [35mbackbone[0m : 
+[11/24 14:49:48]         [35mdepth[0m : [92m152[0m
+[11/24 14:49:48]         [35mname[0m : [92mResNetSlowOnly[0m
+[11/24 14:49:48]         [35mwidth_per_group[0m : [92m32[0m
+[11/24 14:49:48]     [35mframework[0m : [92mRecognizer3D[0m
+[11/24 14:49:48]     [35mhead[0m : 
+[11/24 14:49:48]         [35mdim_in[0m : [92m512[0m
+[11/24 14:49:48]         [35mdropout_rate[0m : [92m0.5[0m
+[11/24 14:49:48]         [35mls_eps[0m : [92m0.1[0m
+[11/24 14:49:48]         [35mname[0m : [92mI3DHead[0m
+[11/24 14:49:48]         [35mnum_classes[0m : [92m30[0m
+[11/24 14:49:48] ------------------------------------------------------------
+[11/24 14:49:48] [35mOPTIMIZER[0m : 
+[11/24 14:49:48]     [35mlearning_rate[0m : 
+[11/24 14:49:48]         [35mT_max[0m : [92m200[0m
+[11/24 14:49:48]         [35mlearning_rate[0m : [92m0.1[0m
+[11/24 14:49:48]         [35mname[0m : [92mCosineAnnealingDecay[0m
+[11/24 14:49:48]     [35mmomentum[0m : [92m0.9[0m
+[11/24 14:49:48]     [35mname[0m : [92mMomentum[0m
+[11/24 14:49:48]     [35mweight_decay[0m : 
+[11/24 14:49:48]         [35mname[0m : [92mL2[0m
+[11/24 14:49:48]         [35mvalue[0m : [92m0.0005[0m
+[11/24 14:49:48] ------------------------------------------------------------
+[11/24 14:49:48] [35mPIPELINE[0m : 
+[11/24 14:49:48]     [35mtest[0m : 
+[11/24 14:49:48]         [35msample[0m : 
+[11/24 14:49:48]             [35mclip_len[0m : [92m64[0m
+[11/24 14:49:48]             [35mname[0m : [92mUniformSampleFrames[0m
+[11/24 14:49:48]             [35mnum_clips[0m : [92m10[0m
+[11/24 14:49:48]             [35mtest_mode[0m : [92mTrue[0m
+[11/24 14:49:48]         [35mtransform[0m : 
+[11/24 14:49:48]             [35mPoseDecode[0m : [92mNone[0m
+[11/24 14:49:48]             [35mPoseCompact[0m : 
+[11/24 14:49:48]                 [35mallow_imgpad[0m : [92mTrue[0m
+[11/24 14:49:48]                 [35mhw_ratio[0m : [92m1.0[0m
+[11/24 14:49:48]             [35mResize[0m : 
+[11/24 14:49:48]                 [35mkeep_ratio[0m : [92mFalse[0m
+[11/24 14:49:48]                 [35mscale[0m : [92m[32, 64][0m
+[11/24 14:49:48]             [35mGeneratePoseTarget[0m : 
+[11/24 14:49:48]                 [35mdouble[0m : [92mTrue[0m
+[11/24 14:49:48]                 [35msigma[0m : [92m0.6[0m
+[11/24 14:49:48]                 [35muse_score[0m : [92mTrue[0m
+[11/24 14:49:48]                 [35mwith_kp[0m : [92mTrue[0m
+[11/24 14:49:48]                 [35mwith_limb[0m : [92mFalse[0m
+[11/24 14:49:48]             [35mFormatShape[0m : 
+[11/24 14:49:48]                 [35minput_format[0m : [92mNCTHW[0m
+[11/24 14:49:48]     [35mtrain[0m : 
+[11/24 14:49:48]         [35msample[0m : 
+[11/24 14:49:48]             [35mclip_len[0m : [92m64[0m
+[11/24 14:49:48]             [35mname[0m : [92mUniformSampleFrames[0m
+[11/24 14:49:48]         [35mtransform[0m : 
+[11/24 14:49:48]             [35mPoseDecode[0m : [92mNone[0m
+[11/24 14:49:48]             [35mPoseCompact[0m : 
+[11/24 14:49:48]                 [35mallow_imgpad[0m : [92mTrue[0m
+[11/24 14:49:48]                 [35mhw_ratio[0m : [92m1.0[0m
+[11/24 14:49:48]             [35mResize[0m : 
+[11/24 14:49:48]                 [35mscale[0m : [92m[-1, 64][0m
+[11/24 14:49:48]             [35mRandomResizedCrop[0m : 
+[11/24 14:49:48]                 [35marea_range[0m : [92m[0.56, 1.0][0m
+[11/24 14:49:48]             [35mResize[0m : 
+[11/24 14:49:48]                 [35mkeep_ratio[0m : [92mFalse[0m
+[11/24 14:49:48]                 [35mscale[0m : [92m[28, 56][0m
+[11/24 14:49:48]             [35mFlip[0m : 
+[11/24 14:49:48]                 [35mflip_ratio[0m : [92m0.5[0m
+[11/24 14:49:48]                 [35mleft_kp[0m : [92m[5, 6, 7, 12, 13, 14, 16, 18, 19, 20, 21][0m
+[11/24 14:49:48]                 [35mright_kp[0m : [92m[2, 3, 4, 9, 10, 11, 15, 17, 22, 23, 24][0m
+[11/24 14:49:48]             [35mGeneratePoseTarget[0m : 
+[11/24 14:49:48]                 [35msigma[0m : [92m0.6[0m
+[11/24 14:49:48]                 [35muse_score[0m : [92mTrue[0m
+[11/24 14:49:48]                 [35mwith_kp[0m : [92mTrue[0m
+[11/24 14:49:48]                 [35mwith_limb[0m : [92mFalse[0m
+[11/24 14:49:48]             [35mFormatShape[0m : 
+[11/24 14:49:48]                 [35minput_format[0m : [92mNCTHW[0m
+[11/24 14:49:48]     [35mvalid[0m : 
+[11/24 14:49:48]         [35msample[0m : 
+[11/24 14:49:48]             [35mclip_len[0m : [92m64[0m
+[11/24 14:49:48]             [35mname[0m : [92mUniformSampleFrames[0m
+[11/24 14:49:48]             [35mnum_clips[0m : [92m1[0m
+[11/24 14:49:48]             [35mtest_mode[0m : [92mTrue[0m
+[11/24 14:49:48]         [35mtransform[0m : 
+[11/24 14:49:48]             [35mPoseDecode[0m : [92mNone[0m
+[11/24 14:49:48]             [35mPoseCompact[0m : 
+[11/24 14:49:48]                 [35mallow_imgpad[0m : [92mTrue[0m
+[11/24 14:49:48]                 [35mhw_ratio[0m : [92m1.0[0m
+[11/24 14:49:48]             [35mResize[0m : 
+[11/24 14:49:48]                 [35mkeep_ratio[0m : [92mFalse[0m
+[11/24 14:49:48]                 [35mscale[0m : [92m[32, 64][0m
+[11/24 14:49:48]             [35mGeneratePoseTarget[0m : 
+[11/24 14:49:48]                 [35mdouble[0m : [92mTrue[0m
+[11/24 14:49:48]                 [35mleft_kp[0m : [92m[5, 6, 7, 12, 13, 14, 16, 18, 19, 20, 21][0m
+[11/24 14:49:48]                 [35mright_kp[0m : [92m[2, 3, 4, 9, 10, 11, 15, 17, 22, 23, 24][0m
+[11/24 14:49:48]                 [35msigma[0m : [92m0.6[0m
+[11/24 14:49:48]                 [35mskeletons[0m : [92m[[0, 1], [0, 15], [0, 16], [1, 2], [1, 5], [1, 8], [2, 3], [3, 4], [5, 6], [6, 7], [8, 9], [8, 12], [9, 10], [10, 11], [11, 22], [11, 24], [12, 13], [13, 14], [14, 21], [14, 19], [15, 17], [16, 18], [19, 20], [22, 23]][0m
+[11/24 14:49:48]                 [35muse_score[0m : [92mTrue[0m
+[11/24 14:49:48]                 [35mwith_kp[0m : [92mTrue[0m
+[11/24 14:49:48]                 [35mwith_limb[0m : [92mFalse[0m
+[11/24 14:49:48]             [35mFormatShape[0m : 
+[11/24 14:49:48]                 [35minput_format[0m : [92mNCTHW[0m
+[11/24 14:49:48] ------------------------------------------------------------
+[11/24 14:49:48] [35mPRECISEBN[0m : 
+[11/24 14:49:48]     [35mnum_iters_preciseBN[0m : [92m200[0m
+[11/24 14:49:48]     [35mpreciseBN_interval[0m : [92m10[0m
+[11/24 14:49:48] ------------------------------------------------------------
+[11/24 14:49:48] [35mepochs[0m : [92m200[0m
+[11/24 14:49:48] [35mlog_interval[0m : [92m20[0m
+[11/24 14:49:48] [35mmodel_name[0m : [92mPoseC3D_olddata_res152_5E-4_preBN_ls[0m
+[11/24 14:49:48] [35msave_interval[0m : [92m5[0m
+[11/24 14:49:48] [35mval_interval[0m : [92m5[0m
+W1124 14:49:48.359853 26875 device_context.cc:404] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 10.1, Runtime API Version: 10.1
+W1124 14:49:48.365126 26875 device_context.cc:422] device: 0, cuDNN Version: 7.6.
+{'format': 'PoseDataset', 'keypoint_file': '/home/aistudio/data/Res152/train_data.npy', 'label_file': '/home/aistudio/data/Res152/train_label.npy', 'conf_thres': 0.0, 'pipeline': <paddlevideo.loader.pipelines.compose.Compose object at 0x7f49042fc410>}
+!!!!!!!!! (2922, 3, 2500, 25, 1)
+/opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/paddle/nn/layer/norm.py:641: UserWarning: When training, we now always track global mean and variance.
+  "When training, we now always track global mean and variance.")
+[11/24 14:49:59] [35mepoch:[  1/200][0m [95mtrain step:0   [0m [92mloss: 3.39576 lr: 0.100000 top1: 0.06250 top5: 0.25000[0m [92mbatch_cost: 2.25503 sec,[0m [92mreader_cost: 1.17993 sec,[0m ips: 7.09526 instance/sec.
