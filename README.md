@@ -21,7 +21,7 @@ CCF大数据与计算智能大赛基于飞桨实现花样滑冰选手骨骼点�
 ```
 cd data
 unzip data118206/c_data.zip
-mv data118206/c_data/* ./
+mv c_data/* ./
 ```
 
 data解压后，项目的整体目录层级如下
@@ -102,7 +102,7 @@ python work/XtSe/tools/split_crossval.py
 ```
 # 详见此目录下的README.md
 cd work/Distill
-python relabel_5fold.py ../../data/Distill/5fold_val_data/valdata_%d.npy ../../data/Distill/5fold_val_pred/nwc5-%d.npy ../../data/Distill/new_train1/
+python relabel_5fold.py
 # RSD训练数据中npy文件为利用在训练集5折数据上训练的ResNet152模型在训练集数据上重新打标得到，可以详见work/RSD/README.md计算npy
 ```
 
