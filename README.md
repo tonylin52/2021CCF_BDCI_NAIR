@@ -6,15 +6,15 @@
 > 一目了然的项目结构能帮助更多人了解，目录树以及设计思想都很重要~
 ```
 |-- TrainData
-    |-- chao
+    |-- XtSe
         |-- datasplit.py
-    |-- he
-    |-- jzz
+    |-- Distill
+    |-- Res152
 |-- TestData
 |-- Model
-    |-- chao
-    |-- he
-    |-- jzz
+    |-- XtSe
+    |-- Distill
+    |-- Res152
 |-- train.sh
 |-- test.sh
 |-- .gitignore
